@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Deviner un MOT</title>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport"/> <!--Responsive-->
+    <link rel="stylesheet" href="devinerunmot.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href='http://fonts.googleapis.com/css?family=Arvo' rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+    <div class="container">
+
+        <h1 id="h1" class="text-center">Deviner un mot</h1>
+        <br>
+        <div id="div-row" class="row">
+            <!--CHOIX DES THEMES https://developer.mozilla.org/en-US/docs/Web/API/File_API/Using_files_from_web_applications-->
+            <div class="offset-0 col-12 col-md-3" id="div-themes">
+                Choisissez un thème en chargeant un fichier :
+                <br><br>
+
+                <input type="file" id="fileElem"  accept="txt"  /> <!--style="display:none"-->
+                
+                <div>
+                    <input type="radio" id="fileSelect-classe-noms" name="theme" value="classe-noms" checked>
+                    <label for="fileSelect-classe-noms">CLASSE - Noms</label>
+                </div>
+                <div>
+                    <input type="radio" id="fileSelect-travail-verbes" name="theme" value="travail-verbes">
+                    <label for="fileSelect-travail-verbes">TRAVAIL - Verbes</label>
+                </div>        
+                
+            
+
+
+                <!--OK clean mais on va essayer les boutons radio (ci-dessus)
+                <input type="file" id="fileElem" multiple
+                    accept="THEMES/*" style="display:none" />
+                <button id="fileSelect" type="button">Sélectionner un thème</button>
+                -->
+
+                <!-- OK mais moche -->
+                Solution 1
+                <ul>
+                    <li>classe-noms.txt</li>
+                    <li>travail-verbes.txt</li>
+                </ul>
+                <div>
+                    <input id="input-file" type="file" accept=".txt"><br>
+                    <label for="input-file">Charger fichier</label>
+                </div>
+               
+
+                <!--KO essai perso
+                <fieldset>
+                    <legend>Thèmes</legend>
+                    <div>
+                      <input type="checkbox" id="input-theme1" name="classe-noms" value="classe-noms.txt" >
+                      <label for="input-theme1">classe-noms</label>
+                    </div>
+                    <div>
+                      <input type="checkbox" id="theme2" name="travail-verbes" value="travail-verbes.txt" checked>
+                      <label for="theme2">travail-verbes</label>
+                    </div>
+                </fieldset>
+                --> 
+                
+            </div>
+            <!--JEU -->
+            <div class="offset-0 col-12 col-md-3">
+                <label for="min-lettres" >Lettres : de </label>
+                <select id="select-min-lettres" name="min-lettres">
+                    <option selected value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                </select>
+                <label for="max-lettres" > à </label>
+                <select id="select-max-lettres" name="max-lettres">
+                        <option selected value="100">Ꞷ</option>
+                        <option value="9">9</option>
+                        <option value="8">8</option>
+                        <option value="7">7</option>
+                        <option value="6">6</option>
+                </select>
+                <br>
+                <label for="erreurs" >Erreurs permises :</label>
+                <select id="select-niveau" name="erreurs">
+                        <option selected value="9">9</option>
+                        <option value="8">8</option>
+                        <option value="7">7</option>
+                        <option value="6">6</option>
+                        <option value="5">5</option>
+                        <option value="4">4</option>
+                        <option value="3">3</option>
+                        <option value="2">2</option>
+                        <option value="1">1</option>
+                        <option value="0">0</option>
+                </select>
+                <br>
+                <button id="bt-commencer">Commencer une partie</button>
+                <br><br>
+                <div id="mot-mystere"></div>
+                <br>
+
+                <div id="div-pupitre"></div>
+                <br>
+                <input type="text" id="input-lettre">
+                <button id="bt-proposer">Proposez une lettre</button>
+                <br><br>
+                <button id="bt-abandonner">Abandonner la partie</button>
+                <br><br>
+                <div id="div-message"></div>
+                
+            </div>
+            <!--PENDU -->
+            <div id="div-pendu" class="col-12 col-md-3">
+                <p id="p-titre">PENDU niveau 9<br></p>
+                <canvas id="canvas"></canvas>
+                <div id="div-hors-canvas"></div>
+            </div>
+            <!--RESULTATS-->
+            <div id="div-deja" class="col-12 col-md-2">
+                <p id="p-titre-deja-joues">MOTS DÉJÀ JOUÉS<br></p>
+                <div id="div-deja-joues"></div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="devinerunmot.js"></script> 
+</body>
+</html>
